@@ -1,12 +1,14 @@
-import { Switch, Route } from 'react-router-dom'
-import Chess from '../pages/Chess'
-import Home from '../pages/Home'
+import { Switch, Route } from 'react-router-dom';
+import ChessPage from '../pages/ChessPage';
+import HomePage from '../pages/HomePage';
+import AuthSuccessPage from '../pages/AuthSuccessPage';
 
 export default function AppRoutes() {
 	return (
 		<Switch>
-			<Route path="/chess" exact={true} component={Chess} />
-			<Route path="/" exact={true} component={Home} />
+			<Route path="/chess" exact={true} component={ChessPage} />
+			<Route path="/" exact={true} component={HomePage} />
+			<Route path="/auth/success" component={AuthSuccessPage} />
 		</Switch>
-	)
+	);
 }
