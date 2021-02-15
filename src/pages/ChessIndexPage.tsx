@@ -1,25 +1,28 @@
 import axios from 'axios';
-import { QueryCache, useMutation, useQuery, useQueryClient } from 'react-query';
-import ChessGame from '../components/ChessGame';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { Link } from 'react-router-dom';
 import LayoutWrapper from '../components/LayoutWrapper';
 
 const url = 'http://localhost:8080/chess';
 
-export default function ChessPage() {
+export default function ChessIndexPage() {
 	return (
 		<LayoutWrapper>
-			<ChessPageContent />
+			<ChessIndexPageContent />
 		</LayoutWrapper>
 	);
 }
 
-function ChessPageContent() {
+function ChessIndexPageContent() {
 	const queryClient = useQueryClient();
 
-	const { isLoading, error, data } = useQuery<any[]>(url, async () => {
-		const response = await axios.get(url);
-		return response.data;
-	});
+	const { isLoading, error, data: chessGames } = useQuery<any[]>(
+		url,
+		async () => {
+			const response = await axios.get(url);
+			return response.data;
+		},
+	);
 
 	const { mutate: createGame } = useMutation(
 		() =>
@@ -36,16 +39,16 @@ function ChessPageContent() {
 	if (isLoading) return <p>Loading...</p>;
 	if (error) return <p>Error...</p>;
 
-	const chessGames = data ?? [];
-
 	return (
 		<div>
 			<h1>CHESS PAGE</h1>
 			<button onClick={() => createGame()}>Create Game</button>
 			<h2>List of chess games:</h2>
 			<ul>
-				{chessGames.map((chessGame) => (
-					<ChessGame game={chessGame} />
+				{(chessGames ?? []).map((chessGame) => (
+					<Link to={'/chess/' + chessGame.id}>
+						Game: {chessGame.id}
+					</Link>
 				))}
 			</ul>
 		</div>
