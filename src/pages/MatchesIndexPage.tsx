@@ -1,7 +1,15 @@
+import {
+	Box,
+	Button,
+	List,
+	ListItem,
+	ListItemText,
+	Typography,
+} from '@material-ui/core';
 import axios from 'axios';
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 const url = 'http://localhost:8080/matches';
 
@@ -27,15 +35,28 @@ export default function MatchesIndexPage() {
 	if (error) return <p>Error...</p>;
 
 	return (
-		<div>
-			<h1>MATCHES PAGE</h1>
-			<button onClick={() => createMatch()}>Create Match</button>
-			<h2>List of chess matches:</h2>
-			<ul>
+		<Box>
+			<Typography variant="h2">Matches</Typography>
+
+			<Button
+				variant="contained"
+				color="primary"
+				onClick={() => createMatch()}
+			>
+				Create Match
+			</Button>
+
+			<List>
 				{(matches ?? []).map((match) => (
-					<Link to={'/matches/' + match.id}>Game: {match.id}</Link>
+					<ListItem
+						button
+						component={RouterLink}
+						to={'/matches/' + match.id}
+					>
+						<ListItemText primary={'Game: ' + match.id} />
+					</ListItem>
 				))}
-			</ul>
-		</div>
+			</List>
+		</Box>
 	);
 }

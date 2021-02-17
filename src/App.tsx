@@ -4,14 +4,24 @@ import AppRoutes from './routes';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import {
 	Box,
+	createMuiTheme,
 	createStyles,
 	CssBaseline,
 	makeStyles,
 	Theme,
+	ThemeProvider,
 	Toolbar,
 } from '@material-ui/core';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import { blue, red } from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+	palette: {
+		primary: blue,
+		secondary: red,
+	},
+});
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -31,22 +41,24 @@ function App() {
 	const classes = useStyles();
 
 	return (
-		<QueryClientProvider client={queryClient}>
+		<ThemeProvider theme={theme}>
 			<BrowserRouter>
-				<CssBaseline />
+				<QueryClientProvider client={queryClient}>
+					<CssBaseline />
 
-				<Box className={classes.root}>
-					<Header />
-					<Sidebar />
+					<Box className={classes.root}>
+						<Header />
+						<Sidebar />
 
-					<Box className={classes.content}>
-						<Toolbar />
+						<Box className={classes.content}>
+							<Toolbar />
 
-						<AppRoutes />
+							<AppRoutes />
+						</Box>
 					</Box>
-				</Box>
+				</QueryClientProvider>
 			</BrowserRouter>
-		</QueryClientProvider>
+		</ThemeProvider>
 	);
 }
 
