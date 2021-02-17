@@ -2,19 +2,10 @@ import axios from 'axios';
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
-import LayoutWrapper from '../components/LayoutWrapper';
 
 const url = 'http://localhost:8080/matches';
 
 export default function MatchesIndexPage() {
-	return (
-		<LayoutWrapper>
-			<MatchesIndexPageContent />
-		</LayoutWrapper>
-	);
-}
-
-function MatchesIndexPageContent() {
 	const queryClient = useQueryClient();
 
 	const { isLoading, error, data: matches } = useQuery<any[]>(

@@ -2,18 +2,9 @@ import axios from 'axios';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import LayoutWrapper from '../components/LayoutWrapper';
 import Match from '../components/Match';
 
 export default function MatchesShowPage() {
-	return (
-		<LayoutWrapper>
-			<MatchesShowPageContent />
-		</LayoutWrapper>
-	);
-}
-
-function MatchesShowPageContent() {
 	const { id } = useParams<{ id: string }>();
 	const url = 'http://localhost:8080/matches/' + id;
 
