@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import LayoutWrapper from '../components/LayoutWrapper';
 
 export default function HomePage() {
@@ -9,5 +10,5 @@ export default function HomePage() {
 }
 
 function HomePageContent() {
-	return <h1>HOME PAGE</h1>;
+	return <Typography variant="h1">Welcome to Botletics</Typography>;
 }

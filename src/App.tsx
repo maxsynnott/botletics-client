@@ -1,10 +1,9 @@
-import './App.css'
-import { BrowserRouter } from 'react-router-dom'
-import React from 'react'
-import AppRoutes from './routes'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import AppRoutes from './routes';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 function App() {
 	return (
@@ -13,7 +12,7 @@ function App() {
 				<AppRoutes />
 			</BrowserRouter>
 		</QueryClientProvider>
-	)
+	);
 }
 
-export default App
+export default App;
