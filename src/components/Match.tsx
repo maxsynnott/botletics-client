@@ -17,13 +17,14 @@ interface MatchProps {
 
 export default function Match({ match }: MatchProps) {
 	const { games } = match;
-	const gridSize: GridSizes = 12 / Math.sqrt(games.length);
+	const gamesPerRow = Math.sqrt(games.length);
+	const gridSize: GridSizes = 12 / gamesPerRow;
 
 	return (
 		<Grid container>
 			{games.map((game: any) => (
 				<Grid item xs={gridSize} key={game.id}>
-					<Game game={game} />
+					<Game game={game} widthDenominator={gamesPerRow} />
 				</Grid>
 			))}
 		</Grid>
