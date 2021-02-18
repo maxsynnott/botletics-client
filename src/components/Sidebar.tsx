@@ -33,23 +33,24 @@ const useStyles = makeStyles((theme: Theme) =>
 	}),
 );
 
+const listItems = [
+	{
+		text: 'Home',
+		to: '/',
+		icon: <HomeIcon />,
+	},
+	{
+		text: 'Matches',
+		to: '/matches',
+		icon: (
+			<SvgIcon>
+				<GiChessQueen />
+			</SvgIcon>
+		),
+	},
+];
+
 export default function Sidebar() {
-	const listItems = [
-		{
-			text: 'Home',
-			to: '/',
-			icon: <HomeIcon />,
-		},
-		{
-			text: 'Matches',
-			to: '/matches',
-			icon: (
-				<SvgIcon>
-					<GiChessQueen />
-				</SvgIcon>
-			),
-		},
-	];
 	const classes = useStyles();
 
 	return (

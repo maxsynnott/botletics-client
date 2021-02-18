@@ -52,6 +52,7 @@ export default function MatchesIndexPage() {
 						button
 						component={RouterLink}
 						to={'/matches/' + match.id}
+						key={match.id}
 					>
 						<ListItemText primary={'Game: ' + match.id} />
 					</ListItem>

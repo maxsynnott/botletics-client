@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppRoutes from './routes';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import {
